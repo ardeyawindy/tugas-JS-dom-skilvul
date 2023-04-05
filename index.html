@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #myDiv {
+        background-color: yellow;
+        border: 1px solid black;
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+      }
+    </style>
+    <title>Contoh HTML dengan Javascript DOM</title>
+  </head>
+  <body>
+    <!-- 3.1 -->
+    <h1>3.1 Section 2-4</h1>
+    <h1>Selecting Element, Traversing Element, dan Manipulating Element</h1>
+
+    <ul id="myList">
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item active">Item 3</li>
+      <li class="item">Item 4</li>
+    </ul>
+
+    <script>
+      // memilih elemen dengan id "myList"
+      var list = document.getElementById("myList");
+
+      // memilih semua elemen dengan class "item"
+      var items = list.getElementsByClassName("item");
+
+      // traversing ke elemen pertama dengan tag "li"
+      var firstItem = list.getElementsByTagName("li")[0];
+
+      // menambahkan class "active" pada elemen pertama
+      firstItem.classList.add("active");
+
+      // mengubah isi teks pada elemen kedua
+      items[1].innerText = "Item 2 (diubah)";
+
+      // menghapus elemen keempat
+      list.removeChild(items[3]);
+    </script>
+
+    <!-- 3.2 -->
+    <h1>3.2 Section 4-6</h1>
+    <h2>Manipulating Element, Working with Attributes, dan Manipulating Element Style</h2>
+    <div id="myDiv">Ini adalah sebuah div.</div>
+    <img id="myImage" src="https://www.w3schools.com/w3images/nature.jpg" alt="Nature" />
+    <script>
+      var div = document.getElementById("myDiv");
+
+      // mengubah isi teks pada div
+      div.innerText = "Ini adalah sebuah div yang sudah diubah.";
+
+      // menambahkan sebuah paragraf pada div
+      var p = document.createElement("p");
+      p.innerText = "Ini adalah sebuah paragraf yang ditambahkan melalui JavaScript.";
+      div.appendChild(p);
+
+      // mengubah atribut "src" pada gambar
+      var img = document.getElementById("myImage");
+      img.setAttribute("src", "https://www.w3schools.com/w3images/lights.jpg");
+
+      // mengubah style pada div
+      div.style.backgroundColor = "blue";
+      div.style.color = "white";
+      div.style.padding = "20px";
+    </script>
+
+    <img id="myImage" src="https://www.w3schools.com/w3images/nature.jpg" alt="Nature" />
+
+    <!-- 3.3 -->
+    <h1>3.3 Section 7-8 Usecase 1</h1>
+    <h2>Contoh Form</h2>
+    <form>
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" /><br /><br />
+
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <script>
+      function submitForm() {
+        // mengambil nilai dari input form
+        var nama = document.getElementById("nama").value;
+        var email = document.getElementById("email").value;
+
+        // melakukan validasi input
+        if (nama == "") {
+          alert("Nama tidak boleh kosong");
+        } else if (email == "") {
+          alert("Email tidak boleh kosong");
+        } else if (!email.includes("@")) {
+          alert("Email tidak valid");
+        } else {
+          // melakukan proses submit form ke server
+          alert("Form berhasil disubmit dengan nilai: " + nama + ", " + email);
+          document.getElementById("nama").value = "";
+          document.getElementById("email").value = "";
+        }
+      }
+    </script>
+    <br />
+    <h1>3.3 Section 7-8 Usecase 2</h1>
+    <h2>Hide/Show Content</h2>
+
+    <button onclick="toggleContent()">Klik Saya!</button>
+
+    <p id="content" style="display: none">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero.
+    </p>
+    <script>
+      // Usecase 2
+      function toggleContent() {
+        var content = document.getElementById("content");
+        if (content.style.display === "none") {
+          content.style.display = "block";
+        } else {
+          content.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
